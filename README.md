@@ -1,4 +1,4 @@
-# DreamOps - AI-Powered Incident Response Platform
+KubeDoo - AI-Powered Incident Response Platform
 
 > Dream easy while AI takes your on-call duty - Intelligent incident response and infrastructure management powered by Claude AI
 
@@ -32,7 +32,7 @@
 
 ## Project Overview
 
-DreamOps is an intelligent AI-powered incident response and infrastructure management platform that automates on-call duties using Claude AI and Model Context Protocol (MCP) integrations.
+KubeDoo is an intelligent AI-powered incident response and infrastructure management platform that automates on-call duties using Claude AI and Model Context Protocol (MCP) integrations.
 
 ### Key Features
 
@@ -75,11 +75,11 @@ DreamOps is an intelligent AI-powered incident response and infrastructure manag
 #### Option 1: Docker Compose (Recommended)
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/oncall-agent.git
-cd oncall-agent
+git clone https://github.com/yourusername/KubeDoo.git
+cd KubeDoo
 
 # Start all services with Docker
-./docker-dev.sh up
+docker compose up -d --build
 
 # Access the application:
 # - Frontend: http://localhost:3000
@@ -90,8 +90,8 @@ cd oncall-agent
 #### Option 2: Manual Setup
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/oncall-agent.git
-cd oncall-agent
+git clone https://github.com/yourusername/KubeDoo.git
+cd KubeDoo
 
 # Backend setup
 cd backend
@@ -106,9 +106,10 @@ npm install
 cp .env.example .env.local
 # Edit .env.local with your database URL
 
-# Run with mock payments (development)
+# Run backend and frontend locally
 cd ..
-./start-dev-with-mock-payments.sh
+uv run python backend/api_server.py &
+cd frontend && npm run dev
 ```
 
 Access the application:
@@ -121,21 +122,17 @@ Access the application:
 ### System Architecture
 
 ```
-┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
-│                 │     │                  │     │                 │
-│   Next.js       │────▶│  FastAPI         │────▶│  Claude AI      │
-│   Frontend      │     │  Backend         │     │  (Anthropic)    │
-│                 │     │                  │     │                 │
-└─────────────────┘     └──────────────────┘     └─────────────────┘
-         │                       │                         │
-         │                       │                         │
-         ▼                       ▼                         ▼
-┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
-│                 │     │                  │     │                 │
-│  Neon           │     │  MCP             │     │  Alert          │
-│  PostgreSQL     │     │  Integrations    │     │  Processing     │
-│                 │     │                  │     │                 │
-└─────────────────┘     └──────────────────┘     └─────────────────┘
+┌───────────────────────┐     ┌──────────────────┐     ┌────────────────────┐
+│ Next.js Frontend      │────▶│ FastAPI Backend  │────▶│ Claude AI (MCP)    │
+│ (KubeDoo Dashboard)   │     │ (KubeDoo API)    │     │ + MCP Integrations │
+└───────────────────────┘     └──────────────────┘     └────────────────────┘
+          │                           │                          │
+          │                           │                          │
+          ▼                           ▼                          ▼
+┌───────────────────────┐     ┌──────────────────┐     ┌────────────────────┐
+│ Neon PostgreSQL       │     │ MCP Integrations │     │ Alert Processing   │
+│ (per env separation)  │     │ (K8s, PD, GH, …) │     │ + Webhook Handlers │
+└───────────────────────┘     └──────────────────┘     └────────────────────┘
 ```
 
 ### Key Architecture Decisions
@@ -151,7 +148,7 @@ Access the application:
 ### Project Structure
 
 ```
-oncall-agent/
+KubeDoo/
 ├── backend/
 │   ├── src/oncall_agent/
 │   │   ├── agent.py              # Core agent logic
@@ -307,17 +304,14 @@ The project uses Neon PostgreSQL with complete environment separation:
 
 #### 2. Configure Webhook
 
-1. Go to **Configuration** → **Extensions** or **Services & Integrations**
-2. Click **New Extension** or **Add Extension**
-3. Choose **Generic V2 Webhook**
-4. Configure:
-   - **Name**: DreamOps Webhook
-   - **Service**: Select the service receiving K8s alerts
-   - **URL**: `https://your-domain.com/webhook/pagerduty` (or use ngrok for local testing)
-   - **Event Subscription**: 
-     - ✅ incident.triggered
-     - ✅ incident.acknowledged 
-     - ✅ incident.resolved
+1. Go to Webhooks v3 and create an Account-scoped webhook
+2. Configure:
+   - **Name**: KubeDoo Webhook
+   - **Scope Type**: Account
+   - **Scope**: your account (e.g., kubedoo-1)
+   - **URL**: `https://<your-ngrok>/webhook/pagerduty`
+   - **Secret**: set `PAGERDUTY_WEBHOOK_SECRET`
+   - **Events**: incident.triggered, incident.acknowledged, incident.resolved
 
 #### 3. Environment Variables
 

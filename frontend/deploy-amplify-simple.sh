@@ -8,10 +8,10 @@ set -e
 echo "🚀 Setting up AWS Amplify deployment..."
 
 # Configuration
-APP_NAME="dreamops-frontend"
+APP_NAME="kubedoo-frontend"
 BRANCH_NAME="main"
 REGION="ap-south-1"
-GITHUB_REPO="https://github.com/SkySingh04/DreamOps"
+GITHUB_REPO="https://github.com/SkySingh04/KubeDoo"
 
 # Check if AWS CLI is installed
 if ! command -v aws &> /dev/null; then
@@ -29,7 +29,7 @@ if [ -z "$APP_ID" ]; then
     # Create the app with GitHub repository
     APP_RESULT=$(aws amplify create-app \
         --name "$APP_NAME" \
-        --description "DreamOps - AI-powered incident response platform" \
+        --description "KubeDoo - AI-powered incident response platform" \
         --repository "$GITHUB_REPO" \
         --platform "WEB_COMPUTE" \
         --build-spec "version: 1
@@ -52,7 +52,7 @@ frontend:
       - frontend/node_modules/**/*
       - frontend/.pnpm-store/**/*" \
         --environment-variables \
-            NEXT_PUBLIC_API_URL="${NEXT_PUBLIC_API_URL:-https://api.dreamops.app}" \
+            NEXT_PUBLIC_API_URL="${NEXT_PUBLIC_API_URL:-https://api.kubedoo.app}" \
             POSTGRES_URL="${POSTGRES_URL:-postgresql://placeholder:placeholder@localhost:5432/placeholder}" \
             _LIVE_UPDATES='[{"pkg":"next","type":"npm","version":"latest"}]' \
         --region $REGION \
@@ -79,7 +79,7 @@ echo ""
 echo "📋 Next steps:"
 echo "1. Go to Amplify Console: https://${REGION}.console.aws.amazon.com/amplify/home?region=${REGION}#/${APP_ID}"
 echo "2. Click 'Connect GitHub' to authorize Amplify to access your repository"
-echo "3. Select the repository: SkySingh04/DreamOps"
+echo "3. Select the repository: SkySingh04/KubeDoo"
 echo "4. Select branch: main"
 echo "5. Keep the default build settings or modify as needed"
 echo "6. Click 'Save and deploy'"

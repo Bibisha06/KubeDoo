@@ -1,6 +1,6 @@
 {
-  "name": "dreamops-frontend",
-  "description": "Dream easy while AI takes your on-call duty - Frontend for DreamOps incident management platform",
+  "name": "kubedoo-frontend",
+  "description": "KubeDoo - AI-powered incident response platform - Frontend",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",

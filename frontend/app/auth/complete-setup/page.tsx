@@ -143,7 +143,7 @@ export default function CompleteSetupPage() {
             Complete Your Setup
           </h1>
           <p className="text-lg text-gray-600">
-            You're almost there! Complete the remaining steps to start using DreamOps.
+            You're almost there! Complete the remaining steps to start using KubeDoo.
           </p>
         </div>
 

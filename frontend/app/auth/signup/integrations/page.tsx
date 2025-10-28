@@ -295,7 +295,7 @@ export default function IntegrationsSetupPage() {
             Let's connect your tools to get started
           </h1>
           <p className="text-lg text-gray-600">
-            DreamOps needs access to your infrastructure to monitor and fix issues automatically
+            KubeDoo needs access to your infrastructure to monitor and fix issues automatically
           </p>
         </div>
 

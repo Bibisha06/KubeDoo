@@ -26,8 +26,8 @@ interface APIKeySetupProps {
 export function APIKeySetup({ 
   open, 
   onComplete, 
-  title = "Welcome to DreamOps!",
-  description = "To get started, please add your LLM API key. This allows DreamOps to analyze and respond to incidents using AI.",
+  title = "Welcome to KubeDoo!",
+  description = "To get started, please add your LLM API key. This allows KubeDoo to analyze and respond to incidents using AI.",
   urgent = false 
 }: APIKeySetupProps) {
   const [provider, setProvider] = useState<'anthropic' | 'openai'>('anthropic');

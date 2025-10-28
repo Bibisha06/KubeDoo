@@ -44,7 +44,7 @@ interface DevConfig {
 const FALLBACK_DEV_CONFIGS = {
   pagerduty: {
     api_key: 'u+wtxR9ysxHtPM9xPL8Q',
-    user_email: 'test@dreamops.ai',
+    user_email: 'test@kubedoo.ai',
     webhook_secret: 'dev-webhook-secret-123456'
   },
   kubernetes: {
@@ -57,7 +57,7 @@ const FALLBACK_DEV_CONFIGS = {
   },
   github: {
     token: 'ghp_devTokenForTesting123456789',
-    organization: 'dreamops-test',
+    organization: 'kubedoo-test',
     repositories: ['backend', 'frontend']
   },
   notion: {

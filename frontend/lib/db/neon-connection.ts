@@ -51,7 +51,7 @@ export async function createNeonConnection(
         
         // Connection options
         connection: {
-          application_name: 'dreamops-frontend',
+          application_name: 'kubedoo-frontend',
         },
         
         // Transform for proper error handling

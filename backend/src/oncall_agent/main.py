@@ -13,6 +13,8 @@ from .api.routers.api_keys import router as api_keys_router
 from .api.routers.settings import router as settings_router
 from .config import get_config
 from .utils import setup_logging
+from .api.webhooks import router as webhooks_router
+
 
 # Setup logging
 config = get_config()
@@ -38,6 +40,7 @@ app.add_middleware(
 # Include routers
 app.include_router(api_keys_router)
 app.include_router(settings_router, prefix="/api/v1")
+app.include_router(webhooks_router, prefix="/api/v1")
 
 # Global agent instance (deprecated - use api_server.py instead)
 agent: OncallAgent | None = None

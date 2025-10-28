@@ -65,8 +65,8 @@ export function OnboardingWrapper({ children }: { children: React.ReactNode }) {
         <APIKeySetup 
           open={showOnboarding} 
           onComplete={handleOnboardingComplete}
-          title="Welcome to DreamOps!"
-          description="To get started, please add your LLM API key. This allows DreamOps to analyze and respond to incidents using AI."
+          title="Welcome to KubeDoo!"
+          description="To get started, please add your LLM API key. This allows KubeDoo to analyze and respond to incidents using AI."
         />
       )}
 
@@ -76,7 +76,7 @@ export function OnboardingWrapper({ children }: { children: React.ReactNode }) {
           open={showCriticalModal} 
           onComplete={handleOnboardingComplete}
           title="API Keys Required"
-          description="All your API keys have been exhausted or are invalid. Please add a working API key to continue using DreamOps."
+          description="All your API keys have been exhausted or are invalid. Please add a working API key to continue using KubeDoo."
           urgent={true}
         />
       )}

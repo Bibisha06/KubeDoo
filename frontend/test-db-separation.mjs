@@ -99,7 +99,7 @@ function loadEnvFile(filePath) {
 
 // Main test function
 async function runTests() {
-  print(colors.bright + colors.blue + '🚀 DreamOps Database Connection Tests' + colors.reset);
+  print(colors.bright + colors.blue + '🚀 KubeDoo Database Connection Tests' + colors.reset);
   print('=====================================');
   print('Testing database separation for local, staging, and production environments\n');
   

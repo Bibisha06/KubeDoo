@@ -6,7 +6,7 @@ set -e
 echo "🚀 Direct AWS Amplify Deployment Starting..."
 
 # Configuration
-APP_NAME="dreamops-frontend"
+APP_NAME="kubedoo-frontend"
 BRANCH_NAME="main"
 REGION="ap-south-1"
 

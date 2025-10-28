@@ -8,7 +8,7 @@ set -e
 echo "🚀 Starting AWS Amplify deployment..."
 
 # Configuration
-APP_NAME="dreamops-frontend"
+APP_NAME="kubedoo-frontend"
 BRANCH_NAME="main"
 REGION="ap-south-1"
 STAGE="PRODUCTION"
@@ -29,7 +29,7 @@ if [ -z "$APP_ID" ]; then
     # Create the app
     APP_ID=$(aws amplify create-app \
         --name "$APP_NAME" \
-        --description "DreamOps - AI-powered incident response platform" \
+        --description "KubeDoo - AI-powered incident response platform for DevOps" \
         --platform "WEB" \
         --region $REGION \
         --query 'app.appId' \

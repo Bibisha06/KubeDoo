@@ -68,7 +68,7 @@ export function Navigation() {
             {/* Logo */}
             <Link href="/" className="flex items-center">
               <Bot className="h-8 w-8 text-orange-600" />
-              <span className="ml-2 text-xl font-bold text-gray-900">DreamOps</span>
+              <span className="ml-2 text-xl font-bold text-gray-900">KubeDoo</span>
             </Link>
 
             {/* Desktop navigation */}

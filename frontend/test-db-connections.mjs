@@ -91,7 +91,7 @@ async function testConnection(envName, connectionString) {
 
 // Main test function
 async function runTests() {
-  console.log('🚀 DreamOps Database Connection Tests');
+console.log('🚀 KubeDoo Database Connection Tests');
   console.log('=====================================');
   console.log('This will verify that your 3 databases are separate and working correctly.\n');
   

@@ -233,7 +233,7 @@ export default function LLMSetupPage() {
             )}
           </h1>
           <p className="text-lg text-gray-600">
-            DreamOps uses advanced AI to analyze and resolve incidents automatically
+            KubeDoo uses advanced AI to analyze and resolve incidents automatically
           </p>
         </div>
 

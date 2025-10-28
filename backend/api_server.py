@@ -121,8 +121,8 @@ async def lifespan(app: FastAPI):
 
 # Create FastAPI app
 app = FastAPI(
-    title="DreamOps API",
-    description="Dream easy while AI takes your on-call duty. AI-powered incident response platform with PagerDuty integration.",
+    title="KubeDoo API",
+    description="KubeDoo: AI-powered incident response platform with PagerDuty integration.",
     version="0.1.0",
     lifespan=lifespan
 )

@@ -1,6 +1,6 @@
-# DreamOps - AI-Powered On-Call Agent
+# Backend Readme
 
-DreamOps is an autonomous incident response system that uses AI to automatically resolve infrastructure issues. The system integrates with PagerDuty, Kubernetes, GitHub, and other services to provide real-time incident detection, analysis, and resolution.
+KubeDoo is an autonomous incident response system that uses AI to automatically resolve infrastructure issues. The system integrates with PagerDuty, Kubernetes, GitHub, and other services to provide real-time incident detection, analysis, and resolution.
 
 ## Table of Contents
 
@@ -20,7 +20,7 @@ DreamOps is an autonomous incident response system that uses AI to automatically
 
 ## Project Overview & Introduction
 
-DreamOps is an intelligent AI-powered incident response and infrastructure management platform that provides:
+KubeDoo is an intelligent AI-powered incident response and infrastructure management platform that provides:
 
 ### Core Features
 - **Autonomous Incident Resolution**: AI-powered analysis and automated remediation using Claude AI
@@ -210,7 +210,7 @@ cp .env.example .env.local
 
 #### 2. Database Setup
 
-DreamOps uses separate Neon PostgreSQL databases for different environments:
+KubeDoo uses separate Neon PostgreSQL databases for different environments:
 
 1. **Create Neon Projects**:
    - Go to [neon.tech](https://neon.tech)
@@ -458,7 +458,7 @@ await github.execute_action("create_issue", {
 ## Payment System
 
 ### Overview
-DreamOps includes a comprehensive payment system with:
+KubeDoo includes a comprehensive payment system with:
 - **Free Tier**: 3 alerts per month
 - **Paid Tiers**: Starter, Pro, and Enterprise plans
 - **PhonePe Integration**: Secure payment processing
@@ -547,7 +547,7 @@ curl -X POST http://localhost:8000/api/v1/mock-payments/initiate \
 
 ### Deployment Options
 
-DreamOps supports multiple deployment strategies:
+KubeDoo supports multiple deployment strategies:
 
 #### Option 1: Terraform Infrastructure (Recommended)
 
@@ -959,11 +959,7 @@ execution_context = {
 #### PagerDuty API Errors
 **Problem**: "Requester User Not Found"
 
-**Solution**: 
-1. Log into PagerDuty
-2. Go to "My Profile" 
-3. Copy your exact email address
-4. Update `PAGERDUTY_USER_EMAIL` in your `.env` file
+**Solution**: Ensure `PAGERDUTY_USER_EMAIL` is a valid user in your PagerDuty account.
 
 #### Database Connection Issues
 **Problem**: Connection timeouts or SSL errors

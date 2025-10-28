@@ -213,7 +213,7 @@ export function APIKeysSection() {
               <CardTitle>LLM API Keys</CardTitle>
             </div>
             <CardDescription>
-              Manage your API keys for AI providers. DreamOps will automatically fallback to
+              Manage your API keys for AI providers. KubeDoo will automatically fallback to
               secondary keys if the primary key fails.
             </CardDescription>
           </div>
@@ -492,7 +492,7 @@ export function APIKeysSection() {
         <div className="mt-4 pt-4 border-t">
           <p className="text-sm text-muted-foreground">
             <strong>Auto-Fallback:</strong> When the primary key fails due to rate limits or
-            errors, DreamOps will automatically switch to the next available key.
+            errors, KubeDoo will automatically switch to the next available key.
           </p>
         </div>
       </CardContent>

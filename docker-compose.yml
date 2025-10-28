@@ -4,8 +4,8 @@ services:
       context: ./backend
       dockerfile: Dockerfile.dev
     container_name: oncall-agent-backend
-    ports:
-      - "8000:8000"
+    env_file:
+      - ./backend/.env
     environment:
       # Development mode
       - NODE_ENV=development
@@ -25,17 +25,21 @@ services:
       # Mock payments for development
       - USE_MOCK_PAYMENTS=true
       
-      # PagerDuty (optional)
-      - PAGERDUTY_ENABLED=${PAGERDUTY_ENABLED:-false}
-      - PAGERDUTY_API_KEY=${PAGERDUTY_API_KEY:-}
-      - PAGERDUTY_WEBHOOK_SECRET=${PAGERDUTY_WEBHOOK_SECRET:-}
+      # PagerDuty (optional) - values provided via env_file backend/.env
       
       # Kubernetes (optional)
       - K8S_ENABLED=${K8S_ENABLED:-false}
       - K8S_CONFIG_PATH=${K8S_CONFIG_PATH:-~/.kube/config}
+      
+      # Firebase Configuration (optional)
+      - FIREBASE_SERVICE_ACCOUNT_KEY_PATH=${FIREBASE_SERVICE_ACCOUNT_KEY_PATH:-./firebase-service-account-key.json}
+      - FIREBASE_PROJECT_ID=${FIREBASE_PROJECT_ID:- kubedoo-df2de}
     volumes:
       - ./backend:/app
       - ~/.kube:/root/.kube:ro  # For kubectl access
+      - ./backend/firebase-service-account-key.json:/app/firebase-service-account-key.json:ro  # Firebase service account
+    ports:
+      - "8000:8000"
     networks:
       - oncall-network
     depends_on:
@@ -47,8 +51,8 @@ services:
       context: ./frontend
       dockerfile: Dockerfile.dev
     container_name: oncall-agent-frontend
-    ports:
-      - "3000:3000"
+    env_file:
+      - ./frontend/.env
     environment:
       # Development mode
       - NODE_ENV=development
@@ -66,10 +70,20 @@ services:
       
       # Mock payments
       - NEXT_PUBLIC_USE_MOCK_PAYMENTS=true
+      
+      # Firebase Configuration
+      - NEXT_PUBLIC_FIREBASE_API_KEY=${NEXT_PUBLIC_FIREBASE_API_KEY}
+      - NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=${NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN}
+      - NEXT_PUBLIC_FIREBASE_PROJECT_ID=${NEXT_PUBLIC_FIREBASE_PROJECT_ID}
+      - NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=${NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET}
+      - NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=${NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID}
+      - NEXT_PUBLIC_FIREBASE_APP_ID=${NEXT_PUBLIC_FIREBASE_APP_ID}
     volumes:
       - ./frontend:/app
       - /app/node_modules  # Prevent node_modules from being overwritten
       - /app/.next  # Prevent build artifacts from being overwritten
+    ports:
+      - "3000:3000"
     depends_on:
       - backend
       - postgres

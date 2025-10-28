@@ -7,8 +7,8 @@ import { Providers } from '@/lib/providers';
 import { DevModeIndicator } from '@/components/dev-mode-indicator';
 
 export const metadata: Metadata = {
-  title: 'DreamOps',
-  description: 'Dream easy while AI takes your on-call duty. AI-powered incident response and infrastructure management platform for DevOps teams.'
+  title: 'KubeDoo',
+  description: 'KubeDoo: AI-powered incident response and infrastructure management for DevOps teams.'
 };
 
 export const viewport: Viewport = {

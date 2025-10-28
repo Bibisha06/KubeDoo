@@ -624,7 +624,7 @@ function NotionConfig({ config, onChange, requirements }: any) {
           <ol className="mt-2 space-y-1 text-sm">
             <li>1. Go to <a href="https://www.notion.so/my-integrations" target="_blank" className="underline">notion.so/my-integrations</a></li>
             <li>2. Click "New integration"</li>
-            <li>3. Give it a name (e.g., "DreamOps")</li>
+            <li>3. Give it a name (e.g., "KubeDoo")</li>
             <li>4. Select the workspace to integrate</li>
             <li>5. Copy the "Internal Integration Token"</li>
             <li>6. Share your runbook pages with the integration</li>
@@ -676,7 +676,7 @@ function GrafanaConfig({ config, onChange, requirements }: any) {
             <li>1. Log in to your Grafana instance</li>
             <li>2. Go to Configuration → API Keys (or Administration → API Keys in newer versions)</li>
             <li>3. Click "Add API key"</li>
-            <li>4. Name it "DreamOps" with "Viewer" role or higher</li>
+            <li>4. Name it "KubeDoo" with "Viewer" role or higher</li>
             <li>5. Copy the generated API key immediately (it won't be shown again)</li>
             <li>6. Note your Grafana URL (e.g., https://mycompany.grafana.net)</li>
             <li className="text-amber-700 font-medium">⚠️ Important: API keys expire! Check expiration settings.</li>

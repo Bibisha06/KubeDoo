@@ -197,4 +197,4 @@ terraform.rc
 
 aws/
 *.zip
-node_modules/
+node_modules/"backend/backendfirebase-service-account-key.json" 
