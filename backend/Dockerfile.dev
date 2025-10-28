@@ -10,14 +10,11 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-# Install uv
-RUN pip install uv
-
 # Copy dependency files
-COPY pyproject.toml uv.lock ./
+COPY requirements.txt ./
 
-# Install dependencies
-RUN uv sync
+# Install dependencies using pip instead of uv
+RUN pip install -r requirements.txt
 
 # Install kubectl for k8s operations (optional for dev)
 RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
@@ -37,4 +34,4 @@ ENV API_PORT=8000
 EXPOSE 8000
 
 # Run the FastAPI application with hot reload
-CMD ["uv", "run", "uvicorn", "api_server:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+CMD ["uvicorn", "api_server:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]

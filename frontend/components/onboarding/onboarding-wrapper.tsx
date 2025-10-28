@@ -65,7 +65,7 @@ export function OnboardingWrapper({ children }: { children: React.ReactNode }) {
         <APIKeySetup 
           open={showOnboarding} 
           onComplete={handleOnboardingComplete}
-          title="Welcome to DreamOps!"
+          title="Welcome to kubedoo!"
           description="To get started, please add your LLM API key. This allows DreamOps to analyze and respond to incidents using AI."
         />
       )}

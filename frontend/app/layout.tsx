@@ -7,8 +7,8 @@ import { Providers } from '@/lib/providers';
 import { DevModeIndicator } from '@/components/dev-mode-indicator';
 
 export const metadata: Metadata = {
-  title: 'DreamOps',
-  description: 'Dream easy while AI takes your on-call duty. AI-powered incident response and infrastructure management platform for DevOps teams.'
+  title: 'kubedoo',
+  description: 'Kubernetes-first, AI-powered incident response and infrastructure management platform.'
 };
 
 export const viewport: Viewport = {
@@ -28,9 +28,9 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`bg-white dark:bg-gray-950 text-black dark:text-white ${manrope.className}`}
+      className={`dark ${manrope.className}`}
     >
-      <body className="min-h-[100dvh] bg-gray-50" suppressHydrationWarning>
+      <body className="min-h-[100dvh] bg-background" suppressHydrationWarning>
         <Providers>
           <SWRConfig
             value={{

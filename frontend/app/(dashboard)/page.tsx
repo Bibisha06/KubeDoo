@@ -46,7 +46,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="how-it-works" className="py-16 bg-gray-50 w-full">
+      <section id="how-it-works" className="py-16 bg-background w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl font-bold text-gray-900">How It Works</h2>
@@ -105,7 +105,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-16 bg-white w-full">
+      <section className="py-16 bg-card w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900">Key Features</h2>
@@ -159,7 +159,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-16 bg-gray-50 w-full">
+      <section className="py-16 bg-background w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900">Integrations</h2>
@@ -269,7 +269,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="mt-8 lg:mt-0 flex justify-center lg:justify-end">
-              <div className="max-w-sm w-full bg-white rounded-lg shadow-xl p-6">
+              <div className="max-w-sm w-full bg-card rounded-lg shadow-xl p-6">
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">Start your free trial</h3>
                 <p className="text-gray-600 mb-6">No credit card required. 14-day free trial.</p>
                 <Link href="/sign-up" className="block w-full">

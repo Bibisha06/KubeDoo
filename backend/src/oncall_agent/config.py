@@ -9,9 +9,12 @@ from pydantic_settings import BaseSettings
 class Config(BaseSettings):
     """Application configuration."""
 
-    # Anthropic/Claude settings
-    anthropic_api_key: str = Field(..., env="ANTHROPIC_API_KEY")
+    # LLM Provider settings (Groq is free and fast!)
+    anthropic_api_key: str | None = Field(None, env="ANTHROPIC_API_KEY")
+    groq_api_key: str | None = Field(None, env="GROQ_API_KEY")
     claude_model: str = Field("claude-3-5-sonnet-20241022", env="CLAUDE_MODEL")
+    groq_model: str = Field("llama3-8b-8192", env="GROQ_MODEL")  # Fast and free!
+    llm_provider: str = Field("groq", env="LLM_PROVIDER")  # "groq" or "anthropic"
 
     # Agent settings
     agent_name: str = Field("oncall-agent", env="AGENT_NAME")

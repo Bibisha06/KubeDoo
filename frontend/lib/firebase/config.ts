@@ -1,5 +1,6 @@
 import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAuth, connectAuthEmulator } from 'firebase/auth';
+import { getAnalytics, isSupported as analyticsSupported } from 'firebase/analytics';
 
 // Your Firebase configuration
 // You'll need to replace these with your actual Firebase project config
@@ -10,6 +11,7 @@ const firebaseConfig = {
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || '',
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || '',
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || '',
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID || undefined,
 };
 
 // Check if Firebase is properly configured
@@ -22,10 +24,19 @@ const isFirebaseConfigured = firebaseConfig.apiKey &&
 // Initialize Firebase only if properly configured
 let app: any = null;
 let auth: any = null;
+let analytics: any = null;
 
 if (isFirebaseConfigured) {
   app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
   auth = getAuth(app);
+  // Initialize analytics in browser when available
+  if (typeof window !== 'undefined') {
+    analyticsSupported().then((ok) => {
+      if (ok) {
+        analytics = getAnalytics(app);
+      }
+    });
+  }
 } else {
   console.warn('Firebase is not properly configured. Authentication features will be disabled.');
 }
@@ -35,4 +46,4 @@ if (process.env.NODE_ENV === 'development' && process.env.NEXT_PUBLIC_USE_FIREBA
   connectAuthEmulator(auth, 'http://localhost:9099', { disableWarnings: true });
 }
 
-export { app, auth };
+export { app, auth, analytics };

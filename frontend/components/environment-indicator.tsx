@@ -8,17 +8,17 @@ export function EnvironmentIndicator() {
   
   const config = {
     local: {
-      bg: 'bg-blue-500',
+      bg: 'bg-primary',
       text: 'LOCAL',
       icon: '🔧'
     },
     staging: {
-      bg: 'bg-yellow-500',
+      bg: 'bg-accent',
       text: 'STAGING',
       icon: '🧪'
     },
     development: {
-      bg: 'bg-green-500',
+      bg: 'bg-primary',
       text: 'DEV',
       icon: '💻'
     }
@@ -31,7 +31,7 @@ export function EnvironmentIndicator() {
   };
   
   return (
-    <div className={`fixed bottom-4 right-4 px-3 py-1 rounded-full text-white text-xs font-medium ${envConfig.bg} shadow-lg flex items-center gap-1 z-50`}>
+    <div className={`fixed bottom-4 right-4 px-3 py-1 rounded-full text-primary-foreground text-xs font-medium ${envConfig.bg} shadow-lg flex items-center gap-1 z-50`}>
       <span>{envConfig.icon}</span>
       <span>{envConfig.text}</span>
     </div>

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Setup - DreamOps',
+  title: 'Setup - kubedoo',
   description: 'Configure your AI-powered incident response platform',
 };
 

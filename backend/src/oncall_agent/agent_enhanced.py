@@ -24,6 +24,7 @@ from .pagerduty_client import (
     acknowledge_pagerduty_incident,
     resolve_pagerduty_incident,
 )
+from .services.groq_client import GroqClient
 from .strategies.deterministic_k8s_resolver import DeterministicK8sResolver
 from .strategies.kubernetes_resolver import KubernetesResolver
 
@@ -42,8 +43,19 @@ class EnhancedOncallAgent:
         self.ai_mode = ai_mode
         self.mcp_integrations: dict[str, MCPIntegration] = {}
 
-        # Initialize Anthropic client
-        self.anthropic_client = AsyncAnthropic(api_key=self.config.anthropic_api_key)
+        # Initialize LLM client (Groq for free AI!)
+        if self.config.llm_provider == "groq" and self.config.groq_api_key:
+            self.llm_client = GroqClient(
+                api_key=self.config.groq_api_key,
+                model=self.config.groq_model
+            )
+            self.logger.info(f"Using Groq with model: {self.config.groq_model}")
+        elif self.config.anthropic_api_key:
+            self.anthropic_client = AsyncAnthropic(api_key=self.config.anthropic_api_key)
+            self.llm_client = None
+            self.logger.info("Using Anthropic Claude")
+        else:
+            raise ValueError("No LLM API key configured! Please set GROQ_API_KEY or ANTHROPIC_API_KEY")
 
         # Initialize Kubernetes MCP integration
         self.k8s_mcp = None
@@ -491,7 +503,7 @@ class EnhancedOncallAgent:
         return context
 
     async def _get_ai_analysis(self, alert: PagerAlert, context: dict[str, Any]) -> str:
-        """Get AI analysis from Claude."""
+        """Get AI analysis from Groq (free and fast!)."""
         prompt = f"""
         Analyze this production incident and provide actionable insights.
         
@@ -513,13 +525,19 @@ class EnhancedOncallAgent:
         Current AI Mode: {self.ai_mode.value}
         """
 
-        response = await self.anthropic_client.messages.create(
-            model=self.config.claude_model,
-            max_tokens=2000,
-            messages=[{"role": "user", "content": prompt}]
-        )
-
-        return response.content[0].text if response.content else "No analysis available"
+        # Use Groq if available, otherwise fall back to Anthropic
+        if hasattr(self, 'llm_client') and self.llm_client:
+            # Using Groq (free!)
+            response = await self.llm_client.simple_prompt(prompt, max_tokens=2000)
+            return response
+        else:
+            # Fallback to Anthropic
+            response = await self.anthropic_client.messages.create(
+                model=self.config.claude_model,
+                max_tokens=2000,
+                messages=[{"role": "user", "content": prompt}]
+            )
+            return response.content[0].text if response.content else "No analysis available"
 
     def _format_context_for_prompt(self, context: dict[str, Any]) -> str:
         """Format context for Claude prompt."""

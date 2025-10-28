@@ -216,8 +216,8 @@ export default function DashboardPage() {
     <section className="flex-1 p-4 lg:p-8 space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">DreamOps Dashboard</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold">kubedoo Dashboard</h1>
+          <p className="text-muted-foreground mt-1">
             Real-time incident monitoring and AI-powered resolution
           </p>
         </div>
@@ -296,7 +296,7 @@ export default function DashboardPage() {
           <CardContent>
             <div className="space-y-3 max-h-64 overflow-y-auto pr-2 custom-scrollbar">
               {incidentsLoading ? (
-                <div className="text-sm text-gray-500">Loading incidents...</div>
+                <div className="text-sm text-muted-foreground">Loading incidents...</div>
               ) : incidents && incidents.length > 0 ? (
                 incidents.map((incident) => (
                   <div key={incident.id} className="flex items-center justify-between pb-2 border-b border-gray-100 last:border-b-0">
@@ -325,7 +325,7 @@ export default function DashboardPage() {
                   </div>
                 ))
               ) : (
-                <div className="text-sm text-gray-500">No recent incidents</div>
+                <div className="text-sm text-muted-foreground">No recent incidents</div>
               )}
             </div>
           </CardContent>
@@ -334,11 +334,11 @@ export default function DashboardPage() {
 
       {/* Rollback Plan Section */}
       {showRollbackPlan && rollbackPlanData && (
-        <Card className="border-2 border-orange-200 bg-orange-50">
+        <Card className="border-2 border-indigo-200 bg-indigo-50">
           <CardHeader>
             <div className="flex items-center justify-between">
               <CardTitle className="flex items-center gap-2">
-                <RefreshCw className="h-5 w-5 text-orange-600" />
+                <RefreshCw className="h-5 w-5 text-indigo-600" />
                 AI Generated Rollback Plan
               </CardTitle>
               <Button
@@ -355,20 +355,20 @@ export default function DashboardPage() {
             </div>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="bg-white p-4 rounded-lg border border-orange-200">
+            <div className="bg-card p-4 rounded-lg border border-border">
               <h4 className="font-semibold text-sm mb-2">Summary</h4>
               <p className="text-sm text-gray-700">{rollbackPlanData.plan}</p>
             </div>
             
             {rollbackPlanData.analysis?.root_cause && (
-              <div className="bg-white p-4 rounded-lg border border-orange-200">
+              <div className="bg-card p-4 rounded-lg border border-border">
                 <h4 className="font-semibold text-sm mb-2">Root Cause Analysis</h4>
                 <p className="text-sm text-gray-700">{rollbackPlanData.analysis.root_cause}</p>
               </div>
             )}
             
             {rollbackPlanData.recommended_actions && rollbackPlanData.recommended_actions.length > 0 && (
-              <div className="bg-white p-4 rounded-lg border border-orange-200">
+              <div className="bg-card p-4 rounded-lg border border-border">
                 <h4 className="font-semibold text-sm mb-2">Recommended Actions</h4>
                 <ol className="space-y-2">
                   {rollbackPlanData.recommended_actions.map((action: any, index: number) => (
@@ -384,7 +384,7 @@ export default function DashboardPage() {
               </div>
             )}
             
-            <div className="text-xs text-gray-500 text-right">
+            <div className="text-xs text-muted-foreground text-right">
               Generated at {new Date(rollbackPlanData.timestamp).toLocaleTimeString()}
             </div>
           </CardContent>
@@ -399,7 +399,7 @@ export default function DashboardPage() {
         <CardContent>
           <div className="space-y-3 max-h-40 overflow-y-auto overflow-x-hidden pr-2 custom-scrollbar">
             {aiActionsLoading ? (
-              <div className="text-sm text-gray-500">Loading AI actions...</div>
+                <div className="text-sm text-muted-foreground">Loading AI actions...</div>
             ) : aiActions && aiActions.length > 0 ? (
               aiActions.map((action) => (
                 <div key={action.id} className="space-y-1 pb-2 border-b border-gray-100 last:border-b-0">
@@ -420,7 +420,7 @@ export default function DashboardPage() {
                 </div>
               ))
             ) : (
-              <div className="text-sm text-gray-500">No recent AI actions</div>
+              <div className="text-sm text-muted-foreground">No recent AI actions</div>
             )}
           </div>
           

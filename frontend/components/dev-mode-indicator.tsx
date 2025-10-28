@@ -22,22 +22,22 @@ export function DevModeIndicator() {
       </div>
       
       {showDetails && (
-        <div className="fixed bottom-16 left-4 bg-white border border-yellow-500 rounded-lg shadow-lg p-4 z-50 max-w-sm">
+        <div className="fixed bottom-16 left-4 bg-card border border-yellow-500 rounded-lg shadow-lg p-4 z-50 max-w-sm text-card-foreground">
           <h3 className="font-bold mb-2">Development Mode Active</h3>
-          <p className="text-sm text-gray-600 mb-3">
+          <p className="text-sm text-muted-foreground mb-3">
             All forms will be auto-filled with test data for faster development.
           </p>
           
-          <div className="mb-3 p-2 bg-gray-50 rounded text-xs">
+          <div className="mb-3 p-2 bg-muted rounded text-xs">
             <p className="font-semibold mb-1">Config Source:</p>
             {isLoading ? (
-              <p className="text-gray-500">Loading backend configuration...</p>
+              <p className="text-muted-foreground">Loading backend configuration...</p>
             ) : hasBackendConfig ? (
               <p className="text-green-600">✓ Using backend environment values</p>
             ) : (
               <>
                 <p className="text-amber-600">✗ Using fallback values</p>
-                {error && <p className="text-gray-500 mt-1">{error}</p>}
+                {error && <p className="text-muted-foreground mt-1">{error}</p>}
               </>
             )}
           </div>
@@ -49,7 +49,7 @@ export function DevModeIndicator() {
             <p>✓ Other integrations</p>
           </div>
           <button 
-            className="mt-3 text-xs text-gray-500 hover:text-gray-700"
+            className="mt-3 text-xs text-muted-foreground hover:text-foreground"
             onClick={(e) => {
               e.stopPropagation();
               setShowDetails(false);
