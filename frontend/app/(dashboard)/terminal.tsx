@@ -7,8 +7,8 @@ export function Terminal() {
   const [terminalStep, setTerminalStep] = useState(0);
   const [copied, setCopied] = useState(false);
   const terminalSteps = [
-    'git clone https://github.com/SkySingh04/oncall-agent',
-    'cd oncall-agent/backend',
+    'git clone KubeDoo',
+    'cd ./backend',
     'uv sync',
     'cp .env.example .env',
     'uv run python main.py',

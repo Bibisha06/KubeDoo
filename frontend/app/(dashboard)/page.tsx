@@ -11,18 +11,17 @@ export default function HomePage() {
           <div className="lg:grid lg:grid-cols-12 lg:gap-8">
             <div className="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
               <h1 className="text-4xl font-bold text-gray-900 tracking-tight sm:text-5xl md:text-6xl">
-                AI-Powered
-                <span className="block text-orange-500">On-Call Automation</span>
+                Sleep Easy.
+                <span className="block text-blue-600">KubeeDoo's Got Your Cluster.</span>
               </h1>
               <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                Let AI handle your 3am incidents while you sleep. Our intelligent agent automatically 
-                triages, debugs, and resolves incidents using your existing DevOps stack.
+                KubeeDoo keeps your Kubernetes healthy 24/7 — preventing failures before they happen, auto-healing incidents in real time, and surfacing instant root-cause insights. From alert to resolution in minutes, not hours. Reliable. Autonomous. Always on duty.
               </p>
               <div className="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0 flex flex-col sm:flex-row gap-4">
                 <Link href="/sign-up">
                   <Button
                     size="lg"
-                    className="text-lg rounded-full"
+                    className="text-lg rounded-full bg-blue-600 hover:bg-blue-700"
                   >
                     Start Free Trial
                     <ArrowRight className="ml-2 h-5 w-5" />
@@ -32,7 +31,7 @@ export default function HomePage() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="text-lg rounded-full"
+                    className="text-lg rounded-full border-blue-600 text-blue-600 hover:bg-blue-50"
                   >
                     View Demo
                   </Button>
@@ -57,7 +56,7 @@ export default function HomePage() {
           <div className="mt-12">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
               <div className="relative text-center">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-500 text-white mx-auto">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white mx-auto">
                   <AlertCircle className="h-6 w-6" />
                 </div>
                 <div className="mt-4">
@@ -68,7 +67,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="relative text-center">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-500 text-white mx-auto">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white mx-auto">
                   <Bot className="h-6 w-6" />
                 </div>
                 <div className="mt-4">
@@ -79,7 +78,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="relative text-center">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-500 text-white mx-auto">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white mx-auto">
                   <Search className="h-6 w-6" />
                 </div>
                 <div className="mt-4">
@@ -90,7 +89,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="relative text-center">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-500 text-white mx-auto">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white mx-auto">
                   <Zap className="h-6 w-6" />
                 </div>
                 <div className="mt-4">
@@ -115,7 +114,7 @@ export default function HomePage() {
           </div>
           <div className="lg:grid lg:grid-cols-3 lg:gap-8">
             <div className="text-center">
-              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-500 text-white mx-auto">
+              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white mx-auto">
                 <Clock className="h-6 w-6" />
               </div>
               <div className="mt-5">
@@ -129,7 +128,7 @@ export default function HomePage() {
             </div>
 
             <div className="mt-10 lg:mt-0 text-center">
-              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-500 text-white mx-auto">
+              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white mx-auto">
                 <Activity className="h-6 w-6" />
               </div>
               <div className="mt-5">
@@ -143,7 +142,7 @@ export default function HomePage() {
             </div>
 
             <div className="mt-10 lg:mt-0 text-center">
-              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-500 text-white mx-auto">
+              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white mx-auto">
                 <Lock className="h-6 w-6" />
               </div>
               <div className="mt-5">
