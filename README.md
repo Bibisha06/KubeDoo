@@ -1709,6 +1709,6 @@ MIT License - see LICENSE file for details
 
 ---
 
-**Built with ❤️ by the DreamOps Team**
+**Built with ❤️ by the KubeDoo Team**
 
 *Dream easy while AI takes your on-call duty*
